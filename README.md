@@ -4,7 +4,7 @@ Simple CURL wrapper library for PHP.
 
 Includes PSR-18 compliant HTTP client.
 
-[![Build Status](https://travis-ci.org/fm-labs/php-curl.svg?branch=main)](https://travis-ci.org/fm-labs/php-uri)
+[![Build Status](https://travis-ci.org/fm-labs/php-curl.svg?branch=main)](https://travis-ci.org/fm-labs/php-curl)
 
 ## Requirements
 
