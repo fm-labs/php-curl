@@ -1,21 +1,26 @@
 <?php
 declare(strict_types=1);
 
-namespace FmLabs\Curl\Exception;
+namespace FmLabs\Curl;
 
 use Http\Client\HttpClient;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
+/**
+ * Class CurlClient
+ *
+ * @package FmLabs\Curl
+ */
 class CurlClient implements HttpClient
 {
     /**
-     * @var \FmLabs\Curl\Exception\Curl
+     * @var \FmLabs\Curl\Curl
      */
     protected $curl;
 
     /**
-     * @return \FmLabs\Curl\Exception\Curl
+     * @return \FmLabs\Curl\Curl
      */
     protected function getCurl(): Curl
     {

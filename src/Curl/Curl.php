@@ -1,12 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace FmLabs\Curl\Exception;
+namespace FmLabs\Curl;
+
+use FmLabs\Curl\Exception\CurlException;
+use FmLabs\Curl\Exception\CurlOptException;
+use FmLabs\Curl\Exception\CurlTransportException;
 
 /**
  * Class Curl
  *
- * @package FmLabs\Curl\Exception
+ * @package FmLabs\Curl
  */
 class Curl
 {
@@ -41,7 +45,7 @@ class Curl
     private $responseRaw;
 
     /**
-     * @var \FmLabs\Curl\Exception\CurlResponse Curl response object
+     * @var \FmLabs\Curl\CurlResponse Curl response object
      */
     private $response;
 
@@ -75,7 +79,7 @@ class Curl
      */
     public function __construct(array $defaults = [])
     {
-        $this->defaults = array_merge($this->defaults, $defaults);
+        //$this->defaults = array_merge($this->defaults, $defaults);
     }
 
     /**
@@ -190,6 +194,14 @@ class Curl
         }
 
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getOpts(): array
+    {
+        return $this->options;
     }
 
     /**
@@ -406,7 +418,9 @@ class Curl
             throw new CurlTransportException($this->error, $this->errno, $this->info);
         }
 
-        $this->responseRaw = $result ? $result : '';
+        $this->responseRaw = is_bool($result) ? '' : $result;
+        $this->headerRaw = $this->headerRaw ?? '';
+
         $this->response = new CurlResponse(
             $this->options,
             $this->responseRaw,
@@ -493,7 +507,7 @@ class Curl
     /**
      * Returns response object
      *
-     * @return \FmLabs\Curl\Exception\CurlResponse
+     * @return \FmLabs\Curl\CurlResponse
      */
     public function getResponse(): CurlResponse
     {

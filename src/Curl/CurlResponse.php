@@ -1,8 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace FmLabs\Curl\Exception;
+namespace FmLabs\Curl;
 
+/**
+ * Class CurlResponse
+ *
+ * @package FmLabs\Curl
+ */
 class CurlResponse
 {
     /**
@@ -68,15 +73,15 @@ class CurlResponse
     {
         $lines = explode("\n", $this->header);
         foreach ($lines as $line) {
-            if (preg_match("@^([\w\-]+):(.*)$@", $line, $match)) {
-                $this->headerData[strtolower($match[1])] = $match[2];
+            if (preg_match("@^([\w\-]+):\s?(.*)$@", $line, $match)) {
+                $this->headerData[$match[1]] = trim($match[2]);
             } elseif (preg_match("/(.+) ([0-9]{3}) (.+)\r\n/DU", $line, $match)) {
                 $this->headerData['http_version'] = $match[1];
                 $this->headerData['http_code'] = $match[2];
                 $this->headerData['http_reason_phrase'] = $match[3];
-            } elseif (preg_match("/^[\r\s]*$/", $line)) {
+            } elseif (preg_match("/^[\r\s]+$/", $line)) {
                 continue;
-            } else {
+            } elseif (strlen(trim($line)) > 0) {
                 $this->headerData[] = $line;
                 //throw new \Exception("Could not parse header: '$line'");
             }
