@@ -6,9 +6,13 @@ php:
   - '7.4'
   - '8.0'
 
+before_install:
+  - sudo apt -y install curl php-curl
+
 install:
-  - travis_retry composer install --no-interaction --no-suggest
+  - travis_retry composer install --no-interaction
 
 # Testing the app
 script:
   - composer run-script test
+  - ./bin/ci/travis.sh

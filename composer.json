@@ -25,11 +25,11 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "FmLabs\\Test\\Curl\\": "tests/Curl"
+            "FmLabs\\Test\\Curl\\": "tests/TestCase/Curl"
         }
     },
     "scripts": {
-        "test": "./vendor/bin/phpunit",
-        "test-verbose": "./vendor/bin/phpunit -vv"
+        "test": "./vendor/bin/phpunit --testsuite php-curl-lib",
+        "test-integration": "./vendor/bin/phpunit --testsuite php-curl-integration -vv"
     }
 }
