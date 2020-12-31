@@ -11,8 +11,11 @@
     </php>
 
     <testsuites>
-        <testsuite name="php-curl">
-            <directory>tests/</directory>
+        <testsuite name="php-curl-lib">
+            <directory>tests/TestCase</directory>
+        </testsuite>
+        <testsuite name="php-curl-integration">
+            <directory>tests/Integration</directory>
         </testsuite>
     </testsuites>
 
