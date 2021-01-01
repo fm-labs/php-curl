@@ -1,6 +1,6 @@
 <?php
 
-namespace FmLabs\Test\TestCase\Curl;
+namespace FmLabs\Curl\Test\TestCase;
 
 use FmLabs\Curl\Curl;
 use PHPUnit\Framework\TestCase;

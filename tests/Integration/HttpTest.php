@@ -1,6 +1,6 @@
 <?php
 
-namespace FmLabs\Test\Integration;
+namespace FmLabs\Curl\Test\Integration;
 
 use FmLabs\Curl\Curl;
 use FmLabs\Curl\CurlResponse;
