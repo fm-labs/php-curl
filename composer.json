@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "FmLabs\\Curl\\": "src"
+            "FmLabs\\Curl\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "FmLabs\\Test\\Curl\\": "tests/TestCase"
+            "FmLabs\\Test\\Curl\\": "tests/"
         }
     },
     "scripts": {
